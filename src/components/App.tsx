@@ -22,6 +22,7 @@ import { CustomGraphNode, CustomGraphEdge } from '../lib/types.ts';
 import { FROZEN_RESPONSES } from '../lib/frozenResponses.ts';
 import { TrialProvider, useTrial } from '../lib/useTrial.tsx';
 
+const FIXED_INTERFACE_MODE = 'token'; 
 /* --------------------- Normalization --------------------- */
 const normalizeQuestion = (q: string) =>
   q
@@ -135,6 +136,7 @@ export function Chat(props) {
   if (!preStudyComplete) {
     return (
       <PreStudyScreen
+        interfaceMode = {FIXED_INTERFACE_MODE}
         onComplete={(data) => {
           setPreStudyData(data);     // ⭐ store demographics
           setPreStudyComplete(true); // continue to study
@@ -170,7 +172,7 @@ function ChatInner({ id, initialMessages, preStudyData }) {
     console.log("Prolific Params:", { pid, studyId, sessionId });
   }, []);
   const [postStudySubmitted, setPostStudySubmitted] = useState(false);
-  const FIXED_INTERFACE_MODE = 'paragraph';   // 👈 this branch = baseline-only
+  const FIXED_INTERFACE_MODE = 'token';   // 👈 this branch = baseline-only
   const hasOpenAiKey = !!import.meta.env.VITE_OPENAI_API_KEY;
   const [questionNumber, setQuestionNumber] = useState(0); // 1..8 in the order *shown*
   const ENABLE_LIVE_MODE = false;

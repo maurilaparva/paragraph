@@ -8,6 +8,7 @@ const COMPREHENSION_FAIL_LINK =
   'https://app.prolific.com/submissions/complete?cc=C440E5TS';
 
 type PreStudyScreenProps = {
+  interfaceMode: 'baseline' | 'paragraph' | 'relation' | 'token';
   onComplete: (data: {
     age: string;
     education: string;
@@ -216,7 +217,7 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
   ],
 };
 
-export function PreStudyScreen({ children, onComplete }: PreStudyScreenProps) {
+export function PreStudyScreen({ interfaceMode, onComplete }: PreStudyScreenProps) {
   const [step, setStep] = useState<Step>('demographics1');
 const [age, setAge] = useState("");
 const [education, setEducation] = useState("");
@@ -233,8 +234,6 @@ const [aiUses, setAiUses] = useState<string[]>([]);
   const [compAttempts, setCompAttempts] = useState(0);
   const [compAnswers, setCompAnswers] = useState<Record<string, number>>({});
   const [compError, setCompError] = useState('');
-
-  const interfaceMode = useMemo(() => getInterfaceModeFromUrl(), []);
   const compQuestions = useMemo(() => COMPREHENSION_BY_MODE[interfaceMode], [interfaceMode]);
 
   /* ---------------------- Logic unchanged ---------------------- */
