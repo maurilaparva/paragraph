@@ -1,4 +1,4 @@
-name: Deploy Baseline Branch to GitHub Pages
+name: Deploy Paragraph Branch to GitHub Pages
 
 on:
   push:
