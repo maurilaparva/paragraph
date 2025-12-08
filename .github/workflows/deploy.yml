@@ -1,0 +1,64 @@
+name: Deploy Baseline Branch to GitHub Pages
+
+on:
+  push:
+    branches: [main]    # <-- deploy only baseline branch
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: main
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile=false
+
+      - name: Build
+        env:
+          VITE_API_BASE: https://prototype-l4vl.onrender.com
+        run: |
+          rm -rf dist
+          pnpm run build
+          cp dist/index.html dist/404.html
+
+      - name: Add 404.html
+        run: cp dist/index.html dist/404.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: main                # <-- NEW environment for this branch
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages (main)
+        id: deploy
+        uses: actions/deploy-pages@v4
