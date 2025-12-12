@@ -13,6 +13,8 @@ type PostStudyResponses = {
   anthropomorphism?: LikertValue;     // human-likeness
   transparency1?: LikertValue;        // understanding basis
   transparency2?: LikertValue;        // understanding wrongness
+   interfaceExperience?: string;     // Q6
+  validationMotivation?: string;   // Q7
 };
 
 export function PostStudyScreen({ onComplete }: { onComplete: (data: PostStudyResponses) => void }) {
@@ -24,11 +26,19 @@ export function PostStudyScreen({ onComplete }: { onComplete: (data: PostStudyRe
     responses.trustIntention &&
     responses.anthropomorphism &&
     responses.transparency1 &&
-    responses.transparency2;
+    responses.transparency2 &&
+    responses.interfaceExperience?.trim() &&
+    responses.validationMotivation?.trim();
 
   function handleChange(field: keyof PostStudyResponses, value: LikertValue) {
     setResponses((prev) => ({ ...prev, [field]: value }));
   }
+  function handleTextChange(
+    field: 'interfaceExperience' | 'validationMotivation',
+    value: string
+  ) {
+    setResponses((prev) => ({ ...prev, [field]: value }));
+}
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -114,7 +124,41 @@ export function PostStudyScreen({ onComplete }: { onComplete: (data: PostStudyRe
             onChange={(v) => handleChange('transparency2', v)}
             options={likertOptions}
           />
+          {/* Q6: Interface Experience */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-800">
+              6. Please describe your experience using this interface.
+            </label>
+            <p className="text-xs text-gray-600">
+              You may comment on anything you found helpful, confusing, surprising,
+              frustrating, or interesting.
+            </p>
+            <textarea
+              value={responses.interfaceExperience ?? ''}
+              onChange={(e) =>
+                handleTextChange('interfaceExperience', e.target.value)
+              }
+              rows={4}
+              className="w-full rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+              placeholder="Your response..."
+            />
+          </div>
 
+          {/* Q7: Validation Motivation */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-800">
+              7. If you used the validation tools (links or search), what motivated you to do so? If you did not, why not?
+            </label>
+            <textarea
+              value={responses.validationMotivation ?? ''}
+              onChange={(e) =>
+                handleTextChange('validationMotivation', e.target.value)
+              }
+              rows={4}
+              className="w-full rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+              placeholder="Your response..."
+            />
+          </div>
           {error && <p className="text-sm text-red-600">{error}</p>}
 
           <div className="flex justify-end pt-4">

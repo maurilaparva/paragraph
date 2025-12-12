@@ -229,6 +229,8 @@ function ChatInner({ id, initialMessages, preStudyData }) {
       anthropomorphism: postData.anthropomorphism,
       transparency1: postData.transparency1,
       transparency2: postData.transparency2,
+      interfaceExperience: postData.interfaceExperience ?? "",
+      validationMotivation: postData.validationMotivation ?? "",
 
       RawData: { postData, demographics }
     };
