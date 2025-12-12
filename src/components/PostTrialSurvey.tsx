@@ -4,15 +4,22 @@ import { Button } from './ui/button';
 
 export default function PostTrialSurvey({ onDone, onBack, questionNumber }) {
   const [finalAnswer, setFinalAnswer] = useState('');
-  const [aiConfidence, setAiConfidence] = useState(3);
-  const [selfConfidence, setSelfConfidence] = useState(3);
+  const [aiConfidence, setAiConfidence] = useState<number | null>(null);
+  const [selfConfidence, setSelfConfidence] = useState<number | null>(null);
 
   const [useAI, setUseAI] = useState(false);
   const [useLink, setUseLink] = useState(false);
   const [useInternet, setUseInternet] = useState(false);
-
+  const hasRelianceSelection = useAI || useLink || useInternet;
   function handleSubmit() {
-    if (!finalAnswer) return;
+    if (
+      !finalAnswer ||
+      aiConfidence === null ||
+      selfConfidence === null ||
+      !hasRelianceSelection
+    ) {
+      return;
+    }
 
     onDone({
       finalAnswer,
@@ -146,18 +153,24 @@ export default function PostTrialSurvey({ onDone, onBack, questionNumber }) {
             2. How confident are you in the AI’s answer?
           </label>
 
-          <input
-            type="range"
-            min={1}
-            max={5}
-            value={aiConfidence}
-            onChange={(e) => setAiConfidence(Number(e.target.value))}
-            className="pro-slider mt-2"
-          />
+          <div className="mt-3 flex gap-4">
+            {[1, 2, 3, 4, 5].map((val) => (
+              <label
+                key={val}
+                className="flex flex-col items-center cursor-pointer"
+              >
+                <input
+                  type="radio"
+                  name="aiConfidence"
+                  checked={aiConfidence === val}
+                  onChange={() => setAiConfidence(val)}
+                  className="h-4 w-4 accent-neutral-700"
+                />
+                <span className="text-xs text-gray-600 mt-1">{val}</span>
+              </label>
+            ))}
+          </div>
 
-          <p className="text-xs text-gray-500 mt-1">
-            Selected: {aiConfidence}
-          </p>
         </div>
 
         {/* 3. Confidence in Own Answer */}
@@ -166,18 +179,23 @@ export default function PostTrialSurvey({ onDone, onBack, questionNumber }) {
             3. How confident are you in your own answer?
           </label>
 
-          <input
-            type="range"
-            min={1}
-            max={5}
-            value={selfConfidence}
-            onChange={(e) => setSelfConfidence(Number(e.target.value))}
-            className="pro-slider mt-2"
-          />
-
-          <p className="text-xs text-gray-500 mt-1">
-            Selected: {selfConfidence}
-          </p>
+          <div className="mt-3 flex gap-4">
+            {[1, 2, 3, 4, 5].map((val) => (
+              <label
+                key={val}
+                className="flex flex-col items-center cursor-pointer"
+              >
+                <input
+                  type="radio"
+                  name="selfConfidence"
+                  checked={selfConfidence === val}
+                  onChange={() => setSelfConfidence(val)}
+                  className="h-4 w-4 accent-neutral-700"
+                />
+                <span className="text-xs text-gray-600 mt-1">{val}</span>
+              </label>
+            ))}
+          </div>
         </div>
 
         {/* 4. Reliance Checkboxes */}
@@ -223,12 +241,17 @@ export default function PostTrialSurvey({ onDone, onBack, questionNumber }) {
       {/* BUTTON ROW */}
       <div className="mt-10 flex justify-end gap-3">
         <Button
-          onClick={handleSubmit}
-          disabled={!finalAnswer}
-          className="px-6"
-        >
-          Submit
-        </Button>
+        onClick={handleSubmit}
+        disabled={
+          !finalAnswer ||
+          aiConfidence === null ||
+          selfConfidence === null ||
+          !hasRelianceSelection
+        }
+        className="px-6"
+      >
+        Submit
+      </Button>
       </div>
     </div>
   );
