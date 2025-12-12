@@ -6,6 +6,64 @@ const ATTENTION_FAIL_LINK =
   'https://app.prolific.com/submissions/complete?cc=C100G96V';
 const COMPREHENSION_FAIL_LINK =
   'https://app.prolific.com/submissions/complete?cc=C440E5TS';
+const SCREENING_FAIL_LINK =
+  'https://app.prolific.com/submissions/complete?cc=CFPS5XSX';
+
+type ScreeningQ = {
+  id: string;
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+};
+
+const SCREENING_QUESTIONS: ScreeningQ[] = [
+  {
+    id: 's1',
+    prompt: 'Which feature would be least relevant for predicting income?',
+    options: [
+      'Years of education',
+      'Job industry',
+      'Annual working hours',
+      'Favorite color'
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 's2',
+    prompt: 'Which indicates poor data quality?',
+    options: [
+      'Variables with different units',
+      'Missing or inconsistent values',
+      'A large number of rows',
+      'Both numerical and categorical data'
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 's3',
+    prompt: 'According to the table below, what were sales in 2022?',
+    options: ['120,000', '150,000', '180,000', '610'],
+    correctIndex: 1,
+  },
+  {
+    id: 's4',
+    prompt: 'According to the line chart, what was the value in 2022?',
+    options: ['15', '18', '20', 'Not shown'],
+    correctIndex: 1,
+  },
+  {
+    id: 's5',
+    prompt:
+      'What conclusion is most appropriate about temperature and crime?',
+    options: [
+      'Temperature causes crime',
+      'Crime causes temperature',
+      'They may be correlated, but causation is unclear',
+      'They are unrelated'
+    ],
+    correctIndex: 2,
+  },
+];
 
 type PreStudyScreenProps = {
   interfaceMode: 'baseline' | 'paragraph' | 'relation' | 'token';
@@ -19,6 +77,7 @@ type PreStudyScreenProps = {
 };
 
 type Step =
+  | 'screening'
   | 'demographics1'
   | 'attention1'
   | 'demographics2'
@@ -216,15 +275,50 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
     },
   ],
 };
+function ScreeningTable() {
+  return (
+    <table className="border text-sm mt-2">
+      <thead>
+        <tr>
+          <th className="border px-2">Year</th>
+          <th className="border px-2">Sales</th>
+          <th className="border px-2">Customers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td className="border px-2">2021</td><td className="border px-2">120,000</td><td className="border px-2">450</td></tr>
+        <tr><td className="border px-2">2022</td><td className="border px-2">150,000</td><td className="border px-2">520</td></tr>
+        <tr><td className="border px-2">2023</td><td className="border px-2">180,000</td><td className="border px-2">610</td></tr>
+      </tbody>
+    </table>
+  );
+}
+function ScreeningLineChart() {
+  return (
+    <svg width="240" height="120" className="mt-2">
+      <polyline
+        points="20,90 120,60 220,40"
+        fill="none"
+        stroke="black"
+        strokeWidth="2"
+      />
+      <text x="110" y="110" fontSize="10">2022</text>
+    </svg>
+  );
+}
 
 export function PreStudyScreen({ interfaceMode, onComplete }: PreStudyScreenProps) {
-  const [step, setStep] = useState<Step>('demographics1');
+  const [step, setStep] = useState<Step>('screening');
 const [age, setAge] = useState("");
 const [education, setEducation] = useState("");
 const [aiStartTime, setAiStartTime] = useState("");
 
 const [aiFrequency, setAiFrequency] = useState("");
 const [aiUses, setAiUses] = useState<string[]>([]);
+  const [screeningAnswers, setScreeningAnswers] =
+  useState<Record<string, number>>({});
+  const [screeningAttempts, setScreeningAttempts] = useState(0);
+const [screeningError, setScreeningError] = useState('');
   const [attention1Passed, setAttention1Passed] = useState<boolean | null>(null);
   const [attention2Passed, setAttention2Passed] = useState<boolean | null>(null);
 
@@ -316,6 +410,63 @@ const [aiUses, setAiUses] = useState<string[]>([]);
             Please complete the following short questionnaire before beginning the main task.
           </p>
         </header>
+        {step === 'screening' && (
+          <section className="space-y-6">
+            <h2 className="text-lg font-semibold">Eligibility Check</h2>
+            <p className="text-sm text-gray-700">
+              Please answer the following questions.
+            </p>
+
+            {SCREENING_QUESTIONS.map(q => (
+              <div key={q.id} className="space-y-2">
+                <p className="text-sm font-medium">{q.prompt}</p>
+
+                {q.id === 's3' && <ScreeningTable />}
+                {q.id === 's4' && <ScreeningLineChart />}
+
+                {q.options.map((opt, idx) => (
+                  <label key={idx} className="flex items-center gap-2 text-sm">
+                    <input
+                      type="radio"
+                      name={q.id}
+                      checked={screeningAnswers[q.id] === idx}
+                      onChange={() =>
+                        setScreeningAnswers(prev => ({ ...prev, [q.id]: idx }))
+                      }
+                    />
+                    {opt}
+                  </label>
+                ))}
+              </div>
+            ))}
+            {screeningError && (
+              <p className="text-sm text-red-600">{screeningError}</p>
+            )}
+            <div className="flex justify-end">
+              <button
+                onClick={() => {
+                  const correct = SCREENING_QUESTIONS.filter(
+                    q => screeningAnswers[q.id] === q.correctIndex
+                  ).length;
+
+                  if (correct >= 4) {
+                    setStep('demographics1');
+                  } else if (screeningAttempts === 0) {
+                    setScreeningAttempts(1);
+                    setScreeningError(
+                      'Some answer/s were incorrect. Please review and try once more.'
+                    );
+                  } else {
+                    window.location.href = SCREENING_FAIL_LINK;
+                  }
+                }}
+                className="px-5 py-2 bg-gray-900 text-white rounded-md text-sm"
+              >
+                Continue
+              </button>
+            </div>
+          </section>
+        )}
 
         {/* ---------------- STEP 1 ---------------- */}
         {step === 'demographics1' && (
