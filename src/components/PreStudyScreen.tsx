@@ -54,7 +54,7 @@ const SCREENING_QUESTIONS: ScreeningQ[] = [
   {
     id: 's5',
     prompt:
-      'What conclusion is most appropriate about temperature and crime?',
+      'Suppose data show that crime rates tend to be higher on hotter days. What conclusion is most appropriate?',
     options: [
       'Temperature causes crime',
       'Crime causes temperature',
@@ -295,14 +295,44 @@ function ScreeningTable() {
 }
 function ScreeningLineChart() {
   return (
-    <svg width="240" height="120" className="mt-2">
+    <svg width="260" height="170" className="mt-2">
+      {/* Y-axis */}
+      <line x1="40" y1="20" x2="40" y2="120" stroke="black" />
+      <text x="10" y="95" fontSize="10">15</text>
+      <text x="10" y="65" fontSize="10">18</text>
+      <text x="10" y="35" fontSize="10">20</text>
+
+      {/* Y-axis label */}
+      <text
+        x="-50"
+        y="12"
+        fontSize="10"
+        transform="rotate(-90 10,15)"
+      >
+        Value
+      </text>
+
+      {/* X-axis */}
+      <line x1="40" y1="120" x2="230" y2="120" stroke="black" />
+      <text x="90" y="140" fontSize="10">2021</text>
+      <text x="140" y="140" fontSize="10">2022</text>
+      <text x="190" y="140" fontSize="10">2023</text>
+
+      {/* X-axis label */}
+      <text x="120" y="160" fontSize="10">
+        Year
+      </text>
+
+      {/* Line */}
       <polyline
-        points="20,90 120,60 220,40"
+        points="40,95 140,65 230,45"
         fill="none"
         stroke="black"
         strokeWidth="2"
       />
-      <text x="110" y="110" fontSize="10">2022</text>
+
+      {/* Point highlight for 2022 */}
+      <circle cx="140" cy="65" r="3" fill="black" />
     </svg>
   );
 }
