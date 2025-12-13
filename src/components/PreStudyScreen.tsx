@@ -713,7 +713,13 @@ const [screeningError, setScreeningError] = useState('');
         {step === 'tutorial' && (
           <section className="space-y-6">
             <h2 className="text-lg font-semibold text-gray-800">Tutorial</h2>
-
+            <div className="border rounded-md overflow-hidden">
+            <img
+              src={`${import.meta.env.BASE_URL}images/${interfaceMode}.jpg`}
+              alt={`${interfaceMode} interface screenshot`}
+              className="w-full"
+            />
+          </div>
             <div className="text-sm text-gray-700 space-y-4 leading-relaxed">
                 {interfaceMode === 'baseline' && (
                     <>
@@ -752,11 +758,12 @@ const [screeningError, setScreeningError] = useState('');
                         <li>Sources provided in the answer</li>
                     </ul>
 
-                    <p>Uncertainty clarification:</p>
+                    <p>Uncertainty Tutorial:</p>
                     <ul className="list-disc pl-6 space-y-1">
-                        <li>A lower value (near 0) means the model shows low uncertainty.</li>
-                        <li>A higher value (near 100) means the model shows greater uncertainty.</li>
-                        <li>These values do NOT indicate correctness or incorrectness.</li>
+                      <li>0–25 → Low uncertainty (model is more confident)</li>
+                      <li>25–75 → Medium uncertainty</li>
+                      <li>75–100 → High uncertainty (model is less confident)</li>
+                      <li>Higher uncertainty means the answer should be treated with more caution, not automatically as incorrect.</li>
                     </ul>
 
                     <p>You may use the provided sources and web search panel.</p>
@@ -780,11 +787,12 @@ const [screeningError, setScreeningError] = useState('');
                         <li>Sources provided in the answer</li>
                     </ul>
 
-                    <p>Uncertainty clarification:</p>
+                    <p>Uncertainty Tutorial:</p>
                     <ul className="list-disc pl-6 space-y-1">
-                        <li>A lower value (near 0) means low uncertainty about that sub-argument.</li>
-                        <li>A higher value (near 100) means higher uncertainty.</li>
-                        <li>These values do NOT indicate correctness or incorrectness.</li>
+                      <li>0–25 → Low uncertainty (model is more confident)</li>
+                      <li>25–75 → Medium uncertainty</li>
+                      <li>75–100 → High uncertainty (model is less confident)</li>
+                      <li>Higher uncertainty means the answer should be treated with more caution, not automatically as incorrect.</li>
                     </ul>
 
                     <p>
@@ -807,11 +815,12 @@ const [screeningError, setScreeningError] = useState('');
                         <li>Sources provided in the answer</li>
                     </ul>
 
-                    <p>Uncertainty clarification:</p>
+                    <p>Uncertainty Tutorial:</p>
                     <ul className="list-disc pl-6 space-y-1">
-                        <li>Lighter/white words → low uncertainty (near 0)</li>
-                        <li>Darker/red-tinted words → higher uncertainty (near 100)</li>
-                        <li>Highlights do NOT indicate correctness or incorrectness</li>
+                      <li>0–25 → Low uncertainty (model is more confident)</li>
+                      <li>25–75 → Medium uncertainty</li>
+                      <li>75–100 → High uncertainty (model is less confident)</li>
+                      <li>Higher uncertainty means the answer should be treated with more caution, not automatically as incorrect.</li>
                     </ul>
 
                     <p>
