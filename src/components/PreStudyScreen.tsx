@@ -15,6 +15,215 @@ type ScreeningQ = {
   options: string[];
   correctIndex: number;
 };
+const TASK_DIRECTIONS = (interfaceMode: InterfaceMode) => (
+  <div className="bg-blue-50 border border-blue-200 rounded-md p-4 space-y-3">
+    <p className="text-sm font-semibold text-gray-900">Your Task:</p>
+
+    <ul className="text-sm text-gray-700 space-y-2 list-disc pl-5">
+      <li>
+        Answer <strong>8 yes/no questions</strong>, one at a time.
+      </li>
+      <li>
+        Use any combination of the available resources to inform your decision. 
+        There is no required approach.
+      </li>
+      <li>
+        <strong>Important:</strong> If you use web search, use only the search panel 
+        in the interface—do not open external browser tabs.
+      </li>
+      <li>
+        After each answer, you'll briefly indicate your confidence and which 
+        information sources you used.
+      </li>
+    </ul>
+  </div>
+);
+const TOOL_OVERVIEW_BASELINE = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">Tool Overview</p>
+
+    <p className="text-sm text-gray-700 leading-relaxed">
+      You will be interacting with this interface to make a <strong>Yes/No decision</strong> for each question.
+    </p>
+
+    <p className="text-sm text-gray-700 leading-relaxed">
+      The interface includes an <strong>AI-generated answer</strong>, <strong>linked sources</strong>,
+      a <strong>web search panel</strong>, and an <strong>answer selection panel</strong>.
+    </p>
+
+    <p className="text-sm text-gray-700 leading-relaxed">
+      The <strong>Sources</strong> section and <strong>Web Search</strong> panel may be used to gather
+      additional non-AI information if you choose. If you use web search, please use the search
+      panel provided in the interface rather than external websites.
+    </p>
+
+    <p className="text-sm text-gray-700 leading-relaxed">
+      Participants may rely on different combinations of the AI answer, sources, or web search
+      when making their decision. There is no single correct strategy for interacting with the interface.
+    </p>
+  </div>
+);
+
+const TOOL_OVERVIEW_UNCERTAINTY = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">Tool Overview</p>
+
+    <p className="text-sm text-gray-700 leading-relaxed">
+      You will be interacting with this interface to make a <strong>Yes/No decision</strong> for each question.
+    </p>
+
+    <p className="text-sm text-gray-700 leading-relaxed">
+      In addition to the <strong>AI-generated answer</strong>, <strong>linked sources</strong>,
+      <strong> web search panel</strong>, and <strong>answer selection panel</strong>, this interface
+      also includes <strong>uncertainty scores</strong> that provide additional information
+      about the AI-generated content.
+    </p>
+
+    <p className="text-sm text-gray-700 leading-relaxed">
+      The <strong>Sources</strong> section and <strong>Web Search</strong> panel may be used to gather
+      additional non-AI information if you choose. If you use web search, please use the search
+      panel provided in the interface rather than external websites.
+    </p>
+
+    <p className="text-sm text-gray-700 leading-relaxed">
+      Participants may rely on different combinations of the AI answer, uncertainty scores,
+      sources, or web search when making their decision. There is no single correct strategy for
+      interacting with the interface.
+    </p>
+  </div>
+);
+
+const UNCERTAINTY_EXPLANATION_PARAGRAPH = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">
+      Uncertainty Score Overview
+    </p>
+    <ul className="text-sm text-gray-700 leading-relaxed list-disc pl-5 space-y-1">
+      <li>
+        The interface displays an <strong>Uncertainty Score (0–100)</strong> for each AI-generated answer.
+      </li>
+      <li>
+        This score reflects how confident the AI model is in its response. Higher scores mean lower confidence.
+      </li>
+      <li>
+        <strong>Important:</strong> The uncertainty score does not tell you whether the answer is correct or incorrect.
+      </li>
+      <li>
+        Score ranges: <strong>0–25</strong> (low uncertainty), <strong>25–75</strong> (medium uncertainty), <strong>75–100</strong> (high uncertainty).
+      </li>
+    </ul>
+  </div>
+);
+
+const UNCERTAINTY_EXPLANATION_TOKEN = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">
+      Uncertainty Score Overview
+    </p>
+    <ul className="text-sm text-gray-700 leading-relaxed list-disc pl-5 space-y-1">
+      <li>
+        Each word in the AI-generated answer has an associated <strong>Uncertainty Score (0–100)</strong>.
+        You can hover over a word to view its score, and words with uncertainty above the slider threshold
+        are highlighted.
+      </li>
+      <li>
+        This score reflects how confident the AI model is in that specific part of the response.
+        Higher scores mean lower confidence.
+      </li>
+      <li>
+        <strong>Important:</strong> Word-level uncertainty does not indicate whether a word or statement is correct or incorrect.
+      </li>
+      <li>
+        Score ranges: <strong>0–25</strong> (low uncertainty), <strong>25–75</strong> (medium uncertainty), <strong>75–100</strong> (high uncertainty).
+      </li>
+    </ul>
+  </div>
+);
+
+const UNCERTAINTY_EXPLANATION_RELATION = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">
+      Uncertainty Score Overview
+    </p>
+    <ul className="text-sm text-gray-700 leading-relaxed list-disc pl-5 space-y-1">
+      <li>
+        The AI-generated output consists of a <strong>main claim</strong> with an associated
+        <strong> Uncertainty Score (0–100)</strong>, along with <strong>supporting</strong> and
+        <strong> attacking sub-arguments</strong> that aim to support or challenge the claim.
+        Each sub-argument also has its own uncertainty score.
+      </li>
+      <li>
+        These scores reflect how confident the AI model is in each claim or sub-argument.
+        Higher scores mean lower confidence.
+      </li>
+      <li>
+        <strong>Important:</strong> Higher uncertainty does not mean a claim or relationship is incorrect.
+      </li>
+      <li>
+        Score ranges: <strong>0–25</strong> (low uncertainty), <strong>25–75</strong> (medium uncertainty), <strong>75–100</strong> (high uncertainty).
+      </li>
+    </ul>
+  </div>
+);
+
+const FIGURE_OVERVIEW_BASELINE = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">
+      Figure Overview
+    </p>
+    <ul className="text-sm text-gray-700 leading-relaxed list-disc pl-5 space-y-1">
+      <li><strong>(1) AI Answer</strong> – displays the AI-generated answer to the question.</li>
+      <li><strong>(2) Sources Section</strong> – lists references associated with the AI-generated answer.</li>
+      <li><strong>(3) Web Search Panel</strong> – allows searching for related information within the interface.</li>
+      <li><strong>(4) Answer Selection Panel</strong> – allows you to select your final Yes/No answer and respond to follow-up questions about confidence and information sources used.</li>
+    </ul>
+  </div>
+);
+
+const FIGURE_OVERVIEW_PARAGRAPH = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">
+      Figure Overview
+    </p>
+    <ul className="text-sm text-gray-700 leading-relaxed list-disc pl-5 space-y-1">
+      <li><strong>(1) AI Answer</strong> – displays the AI-generated answer to the question.</li>
+      <li><strong>(2) Sources Section</strong> – lists references associated with the AI-generated answer.</li>
+      <li><strong>(3) Web Search Panel</strong> – allows searching for related information within the interface.</li>
+      <li><strong>(4) Answer Selection Panel</strong> – allows you to select your final Yes/No answer and respond to follow-up questions about confidence and information sources used.</li>
+      <li><strong>(5) Uncertainty Score</strong> – displays a single uncertainty score (0-100%) for the AI-generated answer as a whole.</li>
+    </ul>
+  </div>
+);
+
+const FIGURE_OVERVIEW_TOKEN = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">
+      Figure Overview
+    </p>
+    <ul className="text-sm text-gray-700 leading-relaxed list-disc pl-5 space-y-1">
+      <li><strong>(1) AI Answer</strong> – displays the AI-generated answer to the question.</li>
+      <li><strong>(2) Sources Section</strong> – lists references associated with the AI-generated answer.</li>
+      <li><strong>(3) Web Search Panel</strong> – allows searching for related information within the interface.</li>
+      <li><strong>(4) Answer Selection Panel</strong> – allows you to select your final Yes/No answer and respond to follow-up questions about confidence and information sources used.</li>
+      <li><strong>(5) Uncertainty Score</strong> – displays uncertainty for each individual word (0-100%) using colored highlights within the AI-generated answer.</li>
+    </ul>
+  </div>
+);
+
+const FIGURE_OVERVIEW_RELATION = (
+  <div className="bg-gray-50 border rounded-md p-4 space-y-2">
+    <p className="text-sm font-medium text-gray-800">
+      Figure Overview
+    </p>
+    <ul className="text-sm text-gray-700 leading-relaxed list-disc pl-5 space-y-1">
+      <li><strong>(1) AI Answer</strong> – displays the AI-generated answer, organized into a central claim and multiple attacking or supporting sub-arguments.</li>
+      <li><strong>(2) Sources Section</strong> – lists references associated with the AI-generated answer.</li>
+      <li><strong>(3) Web Search Panel</strong> – allows searching for related information within the interface.</li>
+      <li><strong>(4) Answer Selection Panel</strong> – allows you to select your final Yes/No answer and respond to follow-up questions about confidence and information sources used.</li>
+      <li><strong>(5) Uncertainty Score</strong> – displays uncertainty scores (0-100%) for the central claim of the output and each attacking or supporting sub-argument.</li>
+    </ul>
+  </div>
+);
 
 const SCREENING_QUESTIONS: ScreeningQ[] = [
   {
@@ -712,125 +921,33 @@ const [screeningError, setScreeningError] = useState('');
         {/* ---------------- STEP 5 (Tutorial) ---------------- */}
         {step === 'tutorial' && (
           <section className="space-y-6">
-            <h2 className="text-lg font-semibold text-gray-800">Tutorial</h2>
-            <div className="border rounded-md overflow-hidden">
+          <h2 className="text-lg font-semibold text-gray-800">Tutorial</h2>
+
+          <p className="text-sm text-gray-700">
+            <strong>Please read the following information carefully before continuing.</strong>
+          </p>
+
+
+          <div className="border rounded-md overflow-hidden">
             <img
               src={`${import.meta.env.BASE_URL}images/${interfaceMode}.jpg`}
               alt={`${interfaceMode} interface screenshot`}
               className="w-full"
             />
           </div>
-            <div className="text-sm text-gray-700 space-y-4 leading-relaxed">
-                {interfaceMode === 'baseline' && (
-                    <>
-                    <p>You will answer 8 questions, one at a time.</p>
+        
 
-                    <p>For each question, you will see:</p>
-                    <ul className="list-disc pl-6 space-y-1">
-                        <li>A medical yes/no question</li>
-                        <li>An AI-generated answer</li>
-                        <li>Sources provided in the answer</li>
-                    </ul>
+            {interfaceMode === 'baseline' && FIGURE_OVERVIEW_BASELINE}
+            {interfaceMode === 'paragraph' && FIGURE_OVERVIEW_PARAGRAPH}
+            {interfaceMode === 'token' && FIGURE_OVERVIEW_TOKEN}
+            {interfaceMode === 'relation' && FIGURE_OVERVIEW_RELATION}
 
-                    <p>You may use:</p>
-                    <ul className="list-disc pl-6 space-y-1">
-                        <li>The sources provided in the answer</li>
-                        <li>The web search panel</li>
-                    </ul>
 
-                    <p>
-                        Your task is to read the information and choose your own Yes/No answer.
-                        After deciding, use the panel on the right to select your Yes/No
-                        answer and respond to the additional questions.
-                    </p>
-                    </>
-                )}
+            {interfaceMode === 'paragraph' && UNCERTAINTY_EXPLANATION_PARAGRAPH}
+            {interfaceMode === 'token' && UNCERTAINTY_EXPLANATION_TOKEN}
+            {interfaceMode === 'relation' && UNCERTAINTY_EXPLANATION_RELATION}
 
-                {interfaceMode === 'paragraph' && (
-                    <>
-                    <p>You will answer 8 questions, one at a time.</p>
-
-                    <p>For each question, you will see:</p>
-                    <ul className="list-disc pl-6 space-y-1">
-                        <li>A medical yes/no question</li>
-                        <li>An AI answer divided into paragraphs</li>
-                        <li>An uncertainty value (0–100) for each paragraph</li>
-                        <li>Sources provided in the answer</li>
-                    </ul>
-
-                    <p>Uncertainty Tutorial:</p>
-                    <ul className="list-disc pl-6 space-y-1">
-                      <li>0–25 → Low uncertainty (model is more confident)</li>
-                      <li>25–75 → Medium uncertainty</li>
-                      <li>75–100 → High uncertainty (model is less confident)</li>
-                      <li>Higher uncertainty means the answer should be treated with more caution, not automatically as incorrect.</li>
-                    </ul>
-
-                    <p>You may use the provided sources and web search panel.</p>
-                    <p>
-                        Your task is to read the answer and uncertainty values, then choose
-                        your own Yes/No answer.
-                    </p>
-                    </>
-                )}
-
-                {interfaceMode === 'relation' && (
-                    <>
-                    <p>You will answer 8 questions, one at a time.</p>
-
-                    <p>For each question, you will see:</p>
-                    <ul className="list-disc pl-6 space-y-1">
-                        <li>A medical yes/no question</li>
-                        <li>An AI-generated answer</li>
-                        <li>A diagram showing how sub-arguments support or attack the answer</li>
-                        <li>An uncertainty value (0–100) for each sub-argument</li>
-                        <li>Sources provided in the answer</li>
-                    </ul>
-
-                    <p>Uncertainty Tutorial:</p>
-                    <ul className="list-disc pl-6 space-y-1">
-                      <li>0–25 → Low uncertainty (model is more confident)</li>
-                      <li>25–75 → Medium uncertainty</li>
-                      <li>75–100 → High uncertainty (model is less confident)</li>
-                      <li>Higher uncertainty means the answer should be treated with more caution, not automatically as incorrect.</li>
-                    </ul>
-
-                    <p>
-                        You may use the provided sources and the web search panel. Your task is
-                        to read the AI answer + diagram + uncertainty values, then choose your
-                        own Yes/No answer.
-                    </p>
-                    </>
-                )}
-
-                {interfaceMode === 'token' && (
-                    <>
-                    <p>You will answer 8 questions, one at a time.</p>
-
-                    <p>For each question, you will see:</p>
-                    <ul className="list-disc pl-6 space-y-1">
-                        <li>A medical yes/no question</li>
-                        <li>An AI-generated answer</li>
-                        <li>Words highlighted with colors representing uncertainty</li>
-                        <li>Sources provided in the answer</li>
-                    </ul>
-
-                    <p>Uncertainty Tutorial:</p>
-                    <ul className="list-disc pl-6 space-y-1">
-                      <li>0–25 → Low uncertainty (model is more confident)</li>
-                      <li>25–75 → Medium uncertainty</li>
-                      <li>75–100 → High uncertainty (model is less confident)</li>
-                      <li>Higher uncertainty means the answer should be treated with more caution, not automatically as incorrect.</li>
-                    </ul>
-
-                    <p>
-                        You may use the provided sources and the web search panel. Your task is
-                        to read the highlighted answer, then choose your own Yes/No answer.
-                    </p>
-                    </>
-                )}
-                </div>
-
+            {TASK_DIRECTIONS(interfaceMode)}
             <div className="flex justify-end pt-4">
               <button
                 onClick={() => setStep('comprehension')}
