@@ -274,8 +274,8 @@ function ChatInner({ id, initialMessages, preStudyData }) {
       Agree: trial.agreement ? 'TRUE' : 'FALSE',
 
       Time: trial.computeResponseTime() / 1000,
-      LinkClick: Number(trial.linkClickCount ?? 0),
-      SearchClick: trial.searchClickCount,
+      LinkClick: (surveyData.__linkClicks ?? trial.linkClickCount)/2,
+      SearchClick: surveyData.__searchClicks ?? trial.searchClickCount,
 
       RawData: { surveyData, trialState: trial }
     };
@@ -343,7 +343,9 @@ function ChatInner({ id, initialMessages, preStudyData }) {
         setMessages((prev) => [...prev, newUser, newAssistant]);
 
         // Show survey immediately
-        setShowSurvey(true);
+        setTimeout(() => {
+          setShowSurvey(true);
+        }, 300);
         return;
       }
 
