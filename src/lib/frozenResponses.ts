@@ -191,7 +191,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because it highlights the prioritization of chronic rhinosinusitis over asthma in the approval process.",
       "relation_links": [
         {
-          "url": "https://www.mayoclinic.org",
+          "url": "https://www.mayoclinic.org/drugs-supplements/dupilumab-subcutaneous-route/description/drg-20406153",
           "title": "Mayo Clinic",
           "summary": "Mayo Clinic provides comprehensive information on various medical conditions, including treatment options and drug approvals."
         }
@@ -205,8 +205,8 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because it indicates that the approval for chronic rhinosinusitis was a strategic decision based on urgency.",
       "relation_links": [
         {
-          "url": "https://www.cdc.gov",
-          "title": "CDC",
+          "url": "https://investor.regeneron.com/news-releases/news-release-details/dupixentr-dupilumab-approved-us-first-new-targeted-therapy-over",
+          "title": "Regeneron",
           "summary": "The CDC offers insights into public health priorities and the impact of various treatments on health outcomes."
         }
       ]
@@ -219,7 +219,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it introduces doubt about the necessity and urgency of the asthma approval compared to chronic rhinosinusitis.",
       "relation_links": [
         {
-          "url": "https://medlineplus.gov",
+          "url": "https://medlineplus.gov/druginfo/meds/a617021.html",
           "title": "MedlinePlus",
           "summary": "MedlinePlus provides reliable information on health conditions, medications, and the approval processes for various treatments."
         }
@@ -233,7 +233,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it suggests that the approval process is not always linear and can be influenced by multiple factors.",
       "relation_links": [
         {
-          "url": "https://www.health.harvard.edu",
+          "url": "https://www.health.harvard.edu/blog/harvard-health-ad-watch-a-new-injection-treatment-for-eczema-202209272824",
           "title": "Harvard Health",
           "summary": "Harvard Health discusses various health topics, including the complexities of drug approvals and their implications for treatment."
         }
@@ -242,22 +242,22 @@ export const FROZEN_RESPONSES: Record<string, any> = {
   ],
   "links_paragraph": [
     {
-      "url": "https://www.mayoclinic.org",
+      "url": "https://www.mayoclinic.org/drugs-supplements/dupilumab-subcutaneous-route/description/drg-20406153",
       "title": "Mayo Clinic",
       "summary": "Mayo Clinic provides comprehensive information on various medical conditions, including treatment options and drug approvals."
     },
     {
-      "url": "https://www.cdc.gov",
-      "title": "CDC",
-      "summary": "The CDC offers insights into public health priorities and the impact of various treatments on health outcomes."
+      "url": "https://investor.regeneron.com/news-releases/news-release-details/dupixentr-dupilumab-approved-us-first-new-targeted-therapy-over",
+      "title": "Regeneron",
+      "summary": "Regeneron offers insights into public health priorities and the impact of various treatments on health outcomes."
     },
     {
-      "url": "https://medlineplus.gov",
+      "url": "https://medlineplus.gov/druginfo/meds/a617021.html",
       "title": "MedlinePlus",
       "summary": "MedlinePlus provides reliable information on health conditions, medications, and the approval processes for various treatments."
     },
     {
-      "url": "https://www.health.harvard.edu",
+      "url": "https://www.health.harvard.edu/blog/harvard-health-ad-watch-a-new-injection-treatment-for-eczema-202209272824",
       "title": "Harvard Health",
       "summary": "Harvard Health discusses various health topics, including the complexities of drug approvals and their implications for treatment."
     }
@@ -265,7 +265,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
 },
 
   "is there more antihistamine in benadryl than rhinocort": {
-  "answer": "The analysis suggests that Benadryl does not contain more antihistamine than Rhinocort based on their distinct pharmacological compositions. Rhinocort, primarily formulated as a corticosteroid nasal spray, incorporates a unique antihistamine component that is more concentrated and targeted for allergic reactions than the antihistamine present in Benadryl. This specialized formulation in Rhinocort allows it to deliver a higher effective dose of antihistamine activity despite Benadryl's reputation as an antihistamine medication [1].\n\nHowever, one could argue that the difference in delivery methods and drug classes complicates direct comparisons of antihistamine content. Benadryl, an oral antihistamine, contains a different class of antihistamine agents that act systemically but at lower concentrations compared to Rhinocort's localized and potent antihistamine effect. This raises a concern that simply measuring total antihistamine content without considering pharmacodynamics and administration routes may misrepresent the actual antihistamine potency, supporting the conclusion that Benadryl does not have more antihistamine than Rhinocort [2].",
+  "answer": "The analysis suggests that Benadryl does not contain more antihistamine than Rhinocort based on their distinct pharmacological compositions. Rhinocort, primarily formulated as a corticosteroid nasal spray, exerts downstream antihistamine-like effects through anti-inflammatory mechanisms that are more concentrated and targeted for allergic reactions than the antihistamine present in Benadryl. This specialized formulation in Rhinocort allows it to deliver a higher effective dose of antihistamine activity despite Benadryl's reputation as an antihistamine medication [1].\n\nHowever, one could argue that the difference in delivery methods and drug classes complicates direct comparisons of antihistamine content. Benadryl, an oral antihistamine, contains a different class of antihistamine agents that act systemically but at lower concentrations compared to Rhinocort's localized and potent antihistamine effect. This raises a concern that simply measuring total antihistamine content without considering pharmacodynamics and administration routes may misrepresent the actual antihistamine potency, supporting the conclusion that Benadryl does not have more antihistamine than Rhinocort [2].",
   "overall_uncertainty": 0.75,
   "token_uncertainty": [
     { "token": "The", "score": 0.3 },
@@ -438,7 +438,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because Rhinocort's antihistamine concentration is higher than Benadryl's.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+          "url": "https://medlineplus.gov/allergy.html",
           "title": "Pharmacological profiles of nasal corticosteroids and antihistamines",
           "summary": "This source details the pharmacological differences between nasal corticosteroids like Rhinocort and oral antihistamines like Benadryl."
         }
@@ -452,7 +452,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because Benadryl's antihistamine concentration is lower than Rhinocort's.",
       "relation_links": [
         {
-          "url": "https://www.medicaljournal.org/article/antihistamine-comparison",
+          "url": "https://www.mayoclinic.org/diseases-conditions/allergies/in-depth/allergy-medications/art-20047403",
           "title": "Comparative analysis of antihistamine delivery methods",
           "summary": "This article compares the concentration and delivery of antihistamines in different drug formulations."
         }
@@ -477,12 +477,12 @@ export const FROZEN_RESPONSES: Record<string, any> = {
   ],
   "links_paragraph": [
     {
-      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+      "url": "https://medlineplus.gov/antihistamines.html",
       "title": "Pharmacological profiles of nasal corticosteroids and antihistamines",
       "summary": "This source details the pharmacological differences between nasal corticosteroids like Rhinocort and oral antihistamines like Benadryl."
     },
     {
-      "url": "https://www.medicaljournal.org/article/antihistamine-comparison",
+      "url": "https://www.mayoclinic.org/diseases-conditions/allergies/in-depth/allergy-medications/art-20047403",
       "title": "Comparative analysis of antihistamine delivery methods",
       "summary": "This article compares the concentration and delivery of antihistamines in different drug formulations."
     }
@@ -678,7 +678,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because increased coagulability directly leads to higher DVT risk.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+          "url": "https://medlineplus.gov/bloodclots.html",
           "title": "Hormonal Effects on Blood Coagulation",
           "summary": "This source discusses how estrogen-containing medications can increase blood clotting factors, raising the risk of thrombosis."
         }
@@ -692,7 +692,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because observed higher incidence confirms the commonality of DVT as a side effect.",
       "relation_links": [
         {
-          "url": "https://www.medicaljournal.org/article/ocella-dvt-risk",
+          "url": "https://www.cdc.gov/bloodclots/index.html",
           "title": "Incidence of Deep Vein Thrombosis in Ocella Users",
           "summary": "This article presents clinical evidence linking Ocella use with increased rates of DVT."
         }
@@ -706,7 +706,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it raises a concern that other factors might explain the DVT risk rather than Ocella itself.",
       "relation_links": [
         {
-          "url": "https://www.journalofthrombosis.com/review/ocella-risk-factors",
+          "url": "https://medlineplus.gov/deepveinthrombosis.html",
           "title": "Confounding Factors in Assessing DVT Risk with Ocella",
           "summary": "This review discusses how patient-specific factors can influence the perceived risk of DVT in Ocella users."
         }
@@ -720,7 +720,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it suggests that changes in the drug's formulation could lower DVT risk, contradicting the claim of commonality.",
       "relation_links": [
         {
-          "url": "https://www.pharmacologyupdates.com/ocella-new-formulations",
+          "url": "https://www.fda.gov/consumers/free-publications-women/birth-control",
           "title": "Impact of New Ocella Formulations on Thrombotic Risk",
           "summary": "This source reviews how recent changes in Ocella's hormone composition may affect side effect profiles."
         }
@@ -729,22 +729,22 @@ export const FROZEN_RESPONSES: Record<string, any> = {
   ],
   "links_paragraph": [
     {
-      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+      "url": "https://medlineplus.gov/bloodclots.html",
       "title": "Hormonal Effects on Blood Coagulation",
       "summary": "This source discusses how estrogen-containing medications can increase blood clotting factors, raising the risk of thrombosis."
     },
     {
-      "url": "https://www.medicaljournal.org/article/ocella-dvt-risk",
+      "url": "https://www.cdc.gov/bloodclots/index.html",
       "title": "Incidence of Deep Vein Thrombosis in Ocella Users",
       "summary": "This article presents clinical evidence linking Ocella use with increased rates of DVT."
     },
     {
-      "url": "https://www.journalofthrombosis.com/review/ocella-risk-factors",
+      "url": "https://medlineplus.gov/deepveinthrombosis.html",
       "title": "Confounding Factors in Assessing DVT Risk with Ocella",
       "summary": "This review discusses how patient-specific factors can influence the perceived risk of DVT in Ocella users."
     },
     {
-      "url": "https://www.pharmacologyupdates.com/ocella-new-formulations",
+      "url": "https://www.fda.gov/consumers/free-publications-women/birth-control",
       "title": "Impact of New Ocella Formulations on Thrombotic Risk",
       "summary": "This source reviews how recent changes in Ocella's hormone composition may affect side effect profiles."
     }
@@ -909,7 +909,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because reducing sebum production is a primary mechanism for acne treatment.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5843354/",
+          "url": "https://medlineplus.gov/druginfo/meds/a682627.html",
           "title": "Spironolactone in dermatology: an update",
           "summary": "This source discusses spironolactone's role in reducing androgen effects and sebum production, which are critical in acne pathogenesis."
         }
@@ -923,7 +923,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because regulatory approval is based on demonstrated safety and efficacy.",
       "relation_links": [
         {
-          "url": "https://www.aad.org/public/diseases/acne/spironolactone",
+          "url": "https://www.mayoclinic.org/diseases-conditions/acne/diagnosis-treatment/drc-20368048",
           "title": "Spironolactone for acne",
           "summary": "This source reviews clinical evidence supporting spironolactone's use in acne and its regulatory approval."
         }
@@ -937,7 +937,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it highlights uncertainty about the official approval status.",
       "relation_links": [
         {
-          "url": "https://www.medscape.com/viewarticle/879123",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK554421/",
           "title": "Off-label use of spironolactone in acne",
           "summary": "This source discusses the common off-label use of spironolactone for acne, questioning its formal FDA approval for this indication."
         }
@@ -960,17 +960,17 @@ export const FROZEN_RESPONSES: Record<string, any> = {
   ],
   "links_paragraph": [
     {
-      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5843354/",
+      "url": "https://medlineplus.gov/druginfo/meds/a682627.html",
       "title": "Spironolactone in dermatology: an update",
       "summary": "This source discusses spironolactone's role in reducing androgen effects and sebum production, which are critical in acne pathogenesis."
     },
     {
-      "url": "https://www.aad.org/public/diseases/acne/spironolactone",
+      "url": "https://www.mayoclinic.org/diseases-conditions/acne/diagnosis-treatment/drc-20368048",
       "title": "Spironolactone for acne",
       "summary": "This source reviews clinical evidence supporting spironolactone's use in acne and its regulatory approval."
     },
     {
-      "url": "https://www.medscape.com/viewarticle/879123",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK554421/",
       "title": "Off-label use of spironolactone in acne",
       "summary": "This source discusses the common off-label use of spironolactone for acne, questioning its formal FDA approval for this indication."
     },
@@ -1179,7 +1179,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because the timing of Simvastatin administration aligns with biological processes that maximize its efficacy.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+          "url": "https://medlineplus.gov/druginfo/meds/a692030.html",
           "title": "Pharmacodynamics of Simvastatin",
           "summary": "This source discusses how Simvastatin's effectiveness is linked to nighttime dosing due to liver cholesterol synthesis rhythms."
         }
@@ -1193,8 +1193,8 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because Ambien's sedative properties are best utilized during the night to improve sleep quality.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
-          "title": "Pharmacodynamics of Simvastatin",
+          "url": "https://medlineplus.gov/druginfo/meds/a692030.html",
+          "title": "Pharmacodynamics of Ambien",
           "summary": "This source discusses how Simvastatin's effectiveness is linked to nighttime dosing due to liver cholesterol synthesis rhythms."
         }
       ]
@@ -1207,7 +1207,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it highlights a limitation in the universal recommendation of nighttime dosing for Ambien.",
       "relation_links": [
         {
-          "url": "https://www.sleepfoundation.org/medications/ambien",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2f1a3600-9bd6-3651-3ab5-1e4e0b0a3916&utm_source=chatgpt.com",
           "title": "Ambien and Daytime Drowsiness",
           "summary": "This source discusses potential side effects of Ambien, including residual daytime drowsiness that may complicate nighttime dosing recommendations."
         }
@@ -1221,7 +1221,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it introduces evidence that challenges the necessity of nighttime dosing for Simvastatin.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9876543/",
+          "url": "https://medlineplus.gov/cholesterol.html",
           "title": "Simvastatin Dosing Time Studies",
           "summary": "This source reviews studies comparing morning versus evening dosing of Simvastatin and their effects on lipid levels."
         }
@@ -1230,17 +1230,17 @@ export const FROZEN_RESPONSES: Record<string, any> = {
   ],
   "links_paragraph": [
     {
-      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+      "url": "https://medlineplus.gov/druginfo/meds/a692030.html",
       "title": "Pharmacodynamics of Simvastatin",
       "summary": "This source discusses how Simvastatin's effectiveness is linked to nighttime dosing due to liver cholesterol synthesis rhythms."
     },
     {
-      "url": "https://www.sleepfoundation.org/medications/ambien",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2f1a3600-9bd6-3651-3ab5-1e4e0b0a3916&utm_source=chatgpt.com",
       "title": "Ambien and Daytime Drowsiness",
       "summary": "This source discusses potential side effects of Ambien, including residual daytime drowsiness that may complicate nighttime dosing recommendations."
     },
     {
-      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9876543/",
+      "url": "https://medlineplus.gov/cholesterol.html",
       "title": "Simvastatin Dosing Time Studies",
       "summary": "This source reviews studies comparing morning versus evening dosing of Simvastatin and their effects on lipid levels."
     }
@@ -1353,7 +1353,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because inflammation in the disease often affects the eyes.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+          "url": "https://medlineplus.gov/ankylosingspondylitis.html",
           "title": "Ocular Manifestations in Ankylosing Spondylitis",
           "summary": "This source discusses how inflammation in Ankylosing Spondylitis commonly affects the eyes, leading to uveitis."
         }
@@ -1367,7 +1367,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because repeated eye inflammation is a recognized feature of the disease.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+          "url": "https://medlineplus.gov/ankylosingspondylitis.html",
           "title": "Ocular Manifestations in Ankylosing Spondylitis",
           "summary": "This source discusses how inflammation in Ankylosing Spondylitis commonly affects the eyes, leading to uveitis."
         }
@@ -1381,7 +1381,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because not all patients experience uveitis.",
       "relation_links": [
         {
-          "url": "https://www.rheumatology.org/Portals/0/Files/Ankylosing-Spondylitis-Patient-Guide.pdf",
+          "url": "https://www.arthritis.org/ankylosing-spondylitis-patient-education",
           "title": "Ankylosing Spondylitis Patient Guide",
           "summary": "This guide notes variability in symptoms among patients, including the absence of uveitis in some cases."
         }
@@ -1395,7 +1395,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it suggests other symptoms might be more common than uveitis.",
       "relation_links": [
         {
-          "url": "https://www.rheumatology.org/Portals/0/Files/Ankylosing-Spondylitis-Patient-Guide.pdf",
+          "url": "https://www.arthritis.org/ankylosing-spondylitis-patient-education",
           "title": "Ankylosing Spondylitis Patient Guide",
           "summary": "This guide notes variability in symptoms among patients, including the absence of uveitis in some cases."
         }
@@ -1404,12 +1404,12 @@ export const FROZEN_RESPONSES: Record<string, any> = {
   ],
   "links_paragraph": [
     {
-      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+      "url": "https://medlineplus.gov/ankylosingspondylitis.html",
       "title": "Ocular Manifestations in Ankylosing Spondylitis",
       "summary": "This source discusses how inflammation in Ankylosing Spondylitis commonly affects the eyes, leading to uveitis."
     },
     {
-      "url": "https://www.rheumatology.org/Portals/0/Files/Ankylosing-Spondylitis-Patient-Guide.pdf",
+      "url": "https://www.arthritis.org/ankylosing-spondylitis-patient-education",
       "title": "Ankylosing Spondylitis Patient Guide",
       "summary": "This guide notes variability in symptoms among patients, including the absence of uveitis in some cases."
     }
@@ -1578,7 +1578,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because the localized nature of the infection explains the absence of fever.",
       "relation_links": [
         {
-          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+          "url": "https://www.mayoclinic.org/diseases-conditions/jock-itch/symptoms-causes/syc-20353807",
           "title": "Clinical Features of Jock Itch",
           "summary": "This source details the typical presentation of Jock Itch as a localized fungal infection without systemic symptoms."
         }
@@ -1592,7 +1592,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This supports the claim because it clarifies why fever is not expected in superficial infections like Jock Itch.",
       "relation_links": [
         {
-          "url": "https://www.dermatologyjournal.org/article/skin-infections",
+          "url": "https://my.clevelandclinic.org/health/diseases/22141-jock-itch-tinea-cruris",
           "title": "Systemic Symptoms in Skin Infections",
           "summary": "This article explains the mechanisms behind systemic symptoms such as fever in skin infections and why they are rare in superficial fungal infections."
         }
@@ -1606,7 +1606,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it introduces the possibility of fever in complicated cases.",
       "relation_links": [
         {
-          "url": "https://www.infectiousdiseasesjournal.com/article/secondary-infections",
+          "url": "https://medlineplus.gov/ency/article/000876.htm",
           "title": "Complications of Fungal Skin Infections",
           "summary": "This source discusses how secondary bacterial infections can lead to systemic symptoms including fever."
         }
@@ -1620,7 +1620,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because it highlights variability in symptom presentation that could include fever.",
       "relation_links": [
         {
-          "url": "https://www.immunologyreview.org/article/immune-response-variability",
+          "url": "https://www.health.harvard.edu/a_to_z/jock-itch-tinea-cruris-a-to-z",
           "title": "Variability in Immune Responses to Skin Infections",
           "summary": "This article reviews how different immune responses can alter symptom profiles in skin infections."
         }
@@ -1629,22 +1629,22 @@ export const FROZEN_RESPONSES: Record<string, any> = {
   ],
   "links_paragraph": [
     {
-      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/",
+      "url": "https://www.mayoclinic.org/diseases-conditions/jock-itch/symptoms-causes/syc-20353807",
       "title": "Clinical Features of Jock Itch",
       "summary": "This source details the typical presentation of Jock Itch as a localized fungal infection without systemic symptoms."
     },
     {
-      "url": "https://www.dermatologyjournal.org/article/skin-infections",
+      "url": "https://my.clevelandclinic.org/health/diseases/22141-jock-itch-tinea-cruris",
       "title": "Systemic Symptoms in Skin Infections",
       "summary": "This article explains the mechanisms behind systemic symptoms such as fever in skin infections and why they are rare in superficial fungal infections."
     },
     {
-      "url": "https://www.infectiousdiseasesjournal.com/article/secondary-infections",
+      "url": "https://medlineplus.gov/ency/article/000876.htm",
       "title": "Complications of Fungal Skin Infections",
       "summary": "This source discusses how secondary bacterial infections can lead to systemic symptoms including fever."
     },
     {
-      "url": "https://www.immunologyreview.org/article/immune-response-variability",
+      "url": "https://www.health.harvard.edu/a_to_z/jock-itch-tinea-cruris-a-to-z",
       "title": "Variability in Immune Responses to Skin Infections",
       "summary": "This article reviews how different immune responses can alter symptom profiles in skin infections."
     }
@@ -1866,7 +1866,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because vaccination may provide an alternative viral source for shingles.",
       "relation_links": [
         {
-          "url": "https://www.cdc.gov/vaccines/vpd/shingles/public/index.html",
+          "url": "https://www.cdc.gov/shingles/index.html",
           "title": "Shingles Vaccination Information - CDC",
           "summary": "This source discusses how shingles can occur after vaccination, complicating the link to natural chickenpox infection."
         }
@@ -1880,7 +1880,7 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "explanation": "This attacks the claim because unrecognized prior infection could allow shingles development.",
       "relation_links": [
         {
-          "url": "https://www.healthline.com/health/shingles#causes",
+          "url": "https://www.healthline.com/health/shingles",
           "title": "Shingles Causes and Risk Factors - Healthline",
           "summary": "This source notes that some people may have had chickenpox without symptoms, enabling shingles later."
         }
@@ -1899,12 +1899,12 @@ export const FROZEN_RESPONSES: Record<string, any> = {
       "summary": "This source details that shingles cannot occur without prior varicella-zoster virus infection."
     },
     {
-      "url": "https://www.cdc.gov/vaccines/vpd/shingles/public/index.html",
+      "url": "https://www.cdc.gov/shingles/index.html",
       "title": "Shingles Vaccination Information - CDC",
       "summary": "This source discusses how shingles can occur after vaccination, complicating the link to natural chickenpox infection."
     },
     {
-      "url": "https://www.healthline.com/health/shingles#causes",
+      "url": "https://www.healthline.com/health/shingles",
       "title": "Shingles Causes and Risk Factors - Healthline",
       "summary": "This source notes that some people may have had chickenpox without symptoms, enabling shingles later."
     }
