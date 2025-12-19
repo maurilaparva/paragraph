@@ -22,6 +22,9 @@ import { CustomGraphNode, CustomGraphEdge } from '../lib/types.ts';
 import { FROZEN_RESPONSES } from '../lib/frozenResponses.ts';
 import { TrialProvider, useTrial } from '../lib/useTrial.tsx';
 
+const ANSWERS_DOC_URL =
+  "https://docs.google.com/document/d/1JrXe5cP0Y5PQrwNR12USwlFlnOSAYn3UJnAS9QZGH5M/edit?usp=sharing";
+
 const FIXED_INTERFACE_MODE = 'paragraph'; 
 /* --------------------- Normalization --------------------- */
 const normalizeQuestion = (q: string) =>
@@ -172,10 +175,11 @@ function ChatInner({ id, initialMessages, preStudyData }) {
     console.log("Prolific Params:", { pid, studyId, sessionId });
   }, []);
   const [postStudySubmitted, setPostStudySubmitted] = useState(false);
-  const FIXED_INTERFACE_MODE = 'paragraph';   // 👈 this branch = baseline-only
+  const FIXED_INTERFACE_MODE = 'paragraph';   
   const hasOpenAiKey = !!import.meta.env.VITE_OPENAI_API_KEY;
   const [questionNumber, setQuestionNumber] = useState(0); // 1..8 in the order *shown*
   const ENABLE_LIVE_MODE = false;
+  const [showCompletionScreen, setShowCompletionScreen] = useState(false);
 
   const [useFrozen] = useState(true);
   const [viewMode, setViewMode] = useAtom(viewModeAtom);
@@ -450,19 +454,49 @@ function ChatInner({ id, initialMessages, preStudyData }) {
   const handleBackToHome = () => {
     setShowSurvey(true);
   };
-  if (studyFinished) {
-    return (
-      <PostStudyScreen
-        onComplete={async (postData) => {
-          await submitPostStudyToSheet(postData, preStudyData);
+  if (studyFinished && !showCompletionScreen) {
+  return (
+    <PostStudyScreen
+      onComplete={async (postData) => {
+        await submitPostStudyToSheet(postData, preStudyData);
 
-          // ⭐ DIRECT REDIRECT TO PROLIFIC — no UI hangs ever again
-          window.location.href =
-            "https://app.prolific.com/submissions/complete?cc=C50IXWLR";
-        }}
-      />
-    );
-  }
+        // Show in-interface completion screen
+        setShowCompletionScreen(true);
+      }}
+    />
+  );
+}
+if (showCompletionScreen) {
+  return (
+    <div className="w-full flex flex-col items-center justify-center p-10 text-center">
+      <h1 className="text-2xl font-semibold mb-4">
+        Thank you for completing the study!
+      </h1>
+
+      <p className="text-gray-600 mb-4 max-w-md">
+        You may choose to review the correct answers to the questions you saw in
+        this study. Viewing this information is optional and will not affect
+        your compensation.
+      </p>
+
+      <a
+        href={ANSWERS_DOC_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 underline mb-6"
+      >
+        Review correct answers
+      </a>
+
+      <a
+        href="https://app.prolific.com/submissions/complete?cc=C50IXWLR"
+        className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+      >
+        Finish on Prolific
+      </a>
+    </div>
+  );
+}
 if (postStudySubmitted) {
   return (
     <div className="w-full flex flex-col items-center justify-center p-10 text-center">
