@@ -325,12 +325,6 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
   baseline: [
     {
       id: 'b-q1',
-      prompt: 'How many questions will you answer?',
-      options: ['4', '6', '8', '12'],
-      correctIndex: 2,
-    },
-    {
-      id: 'b-q2',
       prompt: 'What is your task for each question?',
       options: [
         'Ignore the AI',
@@ -341,14 +335,14 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
       correctIndex: 2,
     },
     {
-      id: 'b-q3',
+      id: 'b-q2',
       prompt:
         'Can you use the sources provided in the answer or the web search panel?',
       options: ['No', 'Yes'],
       correctIndex: 1,
     },
     {
-      id: 'b-q4',
+      id: 'b-q3',
       prompt: 'Is the AI answer always guaranteed to be correct?',
       options: ['Yes', 'No'],
       correctIndex: 1,
@@ -357,12 +351,6 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
   paragraph: [
     {
       id: 'p-q1',
-      prompt: 'How many questions will you answer?',
-      options: ['4', '6', '8', '12'],
-      correctIndex: 2,
-    },
-    {
-      id: 'p-q2',
       prompt: 'What additional information does this interface show?',
       options: [
         'Token highlights',
@@ -373,7 +361,7 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
       correctIndex: 2,
     },
     {
-      id: 'p-q3',
+      id: 'p-q2',
       prompt: 'What is your task for each question?',
       options: [
         'Rate paragraphs',
@@ -383,14 +371,14 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
       correctIndex: 2,
     },
     {
-      id: 'p-q4',
+      id: 'p-q3',
       prompt:
         'Does a higher uncertainty value guarantee the paragraph is incorrect?',
       options: ['Yes', 'No'],
       correctIndex: 1,
     },
     {
-      id: 'p-q5',
+      id: 'p-q4',
       prompt:
         'Can you use the sources provided in the answer or the web search panel?',
       options: ['No', 'Yes'],
@@ -400,12 +388,6 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
   relation: [
     {
       id: 'r-q1',
-      prompt: 'How many questions will you answer?',
-      options: ['4', '6', '8', '12'],
-      correctIndex: 2,
-    },
-    {
-      id: 'r-q2',
       prompt: 'What visualization appears in this interface?',
       options: [
         'Token highlights',
@@ -416,7 +398,7 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
       correctIndex: 2,
     },
     {
-      id: 'r-q3',
+      id: 'r-q2',
       prompt: 'What is your task for each question?',
       options: [
         'Describe the diagram',
@@ -426,14 +408,14 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
       correctIndex: 2,
     },
     {
-      id: 'r-q4',
+      id: 'r-q3',
       prompt:
         'Do higher uncertainty values mean the relationship is incorrect?',
       options: ['Yes', 'No'],
       correctIndex: 1,
     },
     {
-      id: 'r-q5',
+      id: 'r-q4',
       prompt:
         'Can you use the sources provided in the answer or the web search panel?',
       options: ['No', 'Yes'],
@@ -443,12 +425,6 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
   token: [
     {
       id: 't-q1',
-      prompt: 'How many questions will you answer?',
-      options: ['4', '6', '8', '12'],
-      correctIndex: 2,
-    },
-    {
-      id: 't-q2',
       prompt: 'What additional information does this interface show?',
       options: [
         'Paragraph labels',
@@ -459,7 +435,7 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
       correctIndex: 2,
     },
     {
-      id: 't-q3',
+      id: 't-q2',
       prompt: 'What is your task for each question?',
       options: [
         'Identify uncertain words',
@@ -469,14 +445,14 @@ const COMPREHENSION_BY_MODE: Record<InterfaceMode, CompQuestion[]> = {
       correctIndex: 2,
     },
     {
-      id: 't-q4',
+      id: 't-q3',
       prompt:
         'Do red-highlighted words mean the statement is incorrect?',
       options: ['Yes', 'No'],
       correctIndex: 1,
     },
     {
-      id: 't-q5',
+      id: 't-q4',
       prompt:
         'Can you use the sources provided in the answer or the web search panel?',
       options: ['No', 'Yes'],
